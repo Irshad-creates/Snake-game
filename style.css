@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+:root {
+  /* bgcolor color */
+  --bg-primaryColor: black;
+  /* text color */
+  --textColor: #fff ;
+  /* font size */
+  --fontsize-xs: 4px;
+  --fontsize-sm: 8px;
+  --fontsize-ml: 16px;
+  --fontsize-xl: 32px;
+  --fontsize-2xl: 40px;
+  /* spacing */
+  --spacing--xs: 4px;
+  --spacing--sm: 8px;
+  --spacing--ml: 16px;
+  --spacing--xl: 32px;
+  --spacing--2xl: 40px;
+  --spacing--3xl: 48px;
+  --borderColor: rgb(42, 42, 42) ;
+  --borderRadius-xs: 4px ;
+  --borderRadius-sm: 8px;
+  --borderRadius-ml: 16px;
+  --borderRadius-l: 20px;
+  --borderRadius-xl: 36px;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-primaryColor);
+  color: var(--textColor);
+  font-family: system-ui;
+}
+main section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--fontsize-sm) var(--spacing--ml);
+  gap: var(--spacing--ml);
+}
+main section .infos {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main section .infos .info {
+  border: 1px solid var(--borderColor);
+  padding: var(--spacing--ml) var(--spacing--ml);
+  font-size: var(--fontsize-ml);
+  border-radius: var(--borderRadius-ml);
+}
+main section .board {
+  border: 1px solid var(--borderColor);
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+}
+main section .board .block {
+  border: 1px solid var(--borderColor);
+}/*# sourceMappingURL=style.css.map */
