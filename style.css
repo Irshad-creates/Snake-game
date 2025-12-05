@@ -14,6 +14,7 @@ html, body {
   /* bgcolor color */
   --bg-primaryColor: black;
   --bg-primaryFill: rgb(72, 72, 217);
+  --bg-foodColor: rgb(255, 34, 0) ;
   /* text color */
   --textColor: #fff ;
   /* font size */
@@ -76,4 +77,8 @@ main section .board .block {
 
 .fill {
   background-color: var(--bg-primaryFill);
+}
+
+.food {
+  background-color: var(--bg-foodColor);
 }/*# sourceMappingURL=style.css.map */

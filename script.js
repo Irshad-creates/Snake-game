@@ -4,17 +4,14 @@ const blockWidth = 80;
 
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
-const blocks = {};
-
+let intervalId = null
 let direction = "right";
+let food = {X : Math.floor(Math.random)*rows, y : Math.E.floor(Math.random)*cols}
+
+const blocks = [];
 
 let snake = [
   { x: 1, y: 4 },
-  // ,{
-  //     x:1,y: 5,
-  // },{
-  //     x :1 ,y : 6
-  // }
 ];
 
 for (let row = 0; row < rows; row++) {
@@ -29,12 +26,6 @@ for (let row = 0; row < rows; row++) {
 
 function render() {
   snake.forEach((segment) => {
-    blocks[`${segment.x}-${segment.y}`].classList.add("fill");
-  });
-}
-
-setInterval(() => {
-
     let head  = null
 
     if(direction === 'left'){
@@ -47,11 +38,47 @@ setInterval(() => {
         head = {x : snake[0].x + 1, y : snake[0].y}
     }
 
+    if(head.x < 0 || head.x > rows || head.y < 0 || head.y >cols){
+      alert('GAME OVER')
+      clearInterval(intervalId)
+    }
+
+    if(food.x == food, food.y ==)
+
     snake.forEach(segment =>{
         blocks[`${segment.x}-${segment.y}`].classList.remove('fill')
     })
     snake.unshift(head)
     snake.pop()
+
+    blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+  });
+}
+
+intervalId=  setInterval(() => {
+
+    // let head  = null
+
+    // if(direction === 'left'){
+    //     head = {x : snake[0].x, y : snake[0].y - 1}
+    // }else if (direction === 'right'){
+    //     head = {x : snake[0].x, y : snake[0].y + 1}
+    // }else if ( direction === 'up'){
+    //     head = {x : snake[0].x - 1, y : snake[0].y}
+    // }else if ( direction === 'down'){
+    //     head = {x : snake[0].x + 1, y : snake[0].y}
+    // }
+
+    // if(head.x < 0 || head.x > rows || head.y < 0 || head.y >cols){
+    //   alert('GAME OVER')
+    //   clearInterval(intervalId)
+    // }
+
+    // snake.forEach(segment =>{
+    //     blocks[`${segment.x}-${segment.y}`].classList.remove('fill')
+    // })
+    // snake.unshift(head)
+    // snake.pop()
 
     render()
 }, 300);
