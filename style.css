@@ -13,6 +13,7 @@ html, body {
 :root {
   /* bgcolor color */
   --bg-primaryColor: black;
+  --bg-primaryFill: rgb(72, 72, 217);
   /* text color */
   --textColor: #fff ;
   /* font size */
@@ -66,9 +67,13 @@ main section .board {
   border: 1px solid var(--borderColor);
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
 }
 main section .board .block {
   border: 1px solid var(--borderColor);
+}
+
+.fill {
+  background-color: var(--bg-primaryFill);
 }/*# sourceMappingURL=style.css.map */
