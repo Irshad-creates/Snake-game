@@ -1,15 +1,14 @@
 let board = document.querySelector(".board");
 const blockHeight = 80;
 const blockWidth = 80;
-
 const rows = Math.floor(board.clientHeight / blockHeight);
 const cols = Math.floor(board.clientWidth / blockWidth);
+
 let intervalId = null
 let direction = "right";
-let food = {X : Math.floor(Math.random)*rows, y : Math.floor(Math.random)*cols}
+let food = {x : Math.floor(Math.random() * rows), y : Math.floor(Math.random() * cols)}
 
 const blocks = [];
-
 let snake = [
   { x: 1, y: 4 },
 ];
@@ -25,10 +24,12 @@ for (let row = 0; row < rows; row++) {
 }
 
 function render() {
-  snake.forEach((segment) => {
+  
     let head  = null
 
     blocks[`${food.x}-${food.y}`].classList.add('food')
+
+    // Calculate next head
 
     if(direction === 'left'){
         head = {x : snake[0].x, y : snake[0].y - 1}
@@ -39,30 +40,37 @@ function render() {
     }else if ( direction === 'down'){
         head = {x : snake[0].x + 1, y : snake[0].y}
     }
-
-    if(head.x < 0 || head.x > rows || head.y < 0 || head.y >cols){
+    
+    // GAME OVER CHECK
+    if(head.x < 0 || head.x > rows || head.y < 0 || head.y > cols){
       alert('GAME OVER')
       clearInterval(intervalId)
     }
-
-    if(head.x == food.x && head.y == food.y){
-          blocks[`${food.x}-${food.y}`].classList.remove('food')
-
-    }
-
+    
+    // Remove old snake fill
     snake.forEach(segment =>{
-        blocks[`${segment.x}-${segment.y}`].classList.remove('fill')
+      blocks[`${segment.x}-${segment.y}`].classList.remove('fill')
     })
-    snake.unshift(head)
-    snake.pop()
+    snake.unshift(head);
+    snake.pop();
+    
+    // Draw snake
+    snake.forEach(segment =>{
+      blocks[`${segment.x}-${segment.y}`].classList.add("fill");
+    })
 
-    blocks[`${segment.x}-${segment.y}`].classList.add("fill");
-  });
+    if(head.x === food.x && head.y === food.y){
+      blocks[`${food.x}-${food.y}`].classList.remove('food')
+      food = {x : Math.floor(Math.random() * rows), y : Math.floor(Math.random() * cols)}
+      blocks[`${food.x}-${food.y}`].classList.add('food')
+      snake.unshift(head);
+    }
+  ;
 }
 
 intervalId=  setInterval(() => {
     render()
-}, 300);
+}, 400);
 
 addEventListener("keydown", function (event) {
   if ((event.key === "ArrowUp" || event.key === "w") && direction !== "down") {
